@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dm0eg1uw0h24p"
+path="res://.godot/imported/swimming_sound.mp3-b52c35c803af91ad6541234bc95d6327.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/Sound effects/swimming_sound.mp3"
+dest_files=["res://.godot/imported/swimming_sound.mp3-b52c35c803af91ad6541234bc95d6327.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
