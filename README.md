@@ -5,13 +5,13 @@ My first game project at Khon Kaen University, completed between September and O
 ## Controls
 - **PC**: Press the **Spacebar** key to dodge obstacles.
 - **Mobile**: Tap anywhere on the screen to dodge obstacles.
-- 
+  
 ## Gameplay Features
 - **Dodge Stone**: If you dodge the stone, you earn +1 point. If you hit the stone, you die.
 - **Collect Treasure**: Collect treasures to increase your score by +3 points.
 - **Collect Bubble**: Gain a speed boost for 2 seconds when collecting bubbles.
 - **Collect Bomb**: Avoid bombs, as they will decrease your score by -2 points.
-- 
+  
 ## How to Download and Run
 1. **Download the Project**:
    - Clone the repository or download the ZIP.
