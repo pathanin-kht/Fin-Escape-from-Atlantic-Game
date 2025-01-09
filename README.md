@@ -1,4 +1,4 @@
-# **Fin: Escape from Atlantic-Game** [Link](https://pathanink.itch.io/finn-escape-from-atlantis)
+# **Fin: Escape from Atlantic-Game** [itch.io](https://pathanink.itch.io/finn-escape-from-atlantis)
 ## Overview
 My first game project at Khon Kaen University, completed between September and October 2023, was a 2D game called "Fin: Escape from Atlantic." I developed it using the Godot Engine, featuring dynamic obstacles, power-ups, and score tracking. The game was published on itch.io for cross-platform play and smooth performance.
 
