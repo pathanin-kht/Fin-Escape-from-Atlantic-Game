@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://rfm80jyawbsm"]
+
+[ext_resource type="Script" path="res://Scripts/obstacle.gd" id="1_xmjwj"]
+[ext_resource type="AudioStream" uid="uid://bfqc6a83qpa1a" path="res://Assets/Sound/Sound effects/Score_sound.mp3" id="2_gcsqh"]
+
+[node name="ObstacleSpawner" type="Node2D"]
+script = ExtResource("1_xmjwj")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Score" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_gcsqh")
+volume_db = -5.0
+bus = &"sfx"

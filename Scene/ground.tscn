@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://dit83uw86qmf"]
+
+[ext_resource type="Script" path="res://Scripts/Ground.gd" id="1_bncyv"]
+[ext_resource type="Texture2D" uid="uid://dii87yuy24f7c" path="res://Assets/Background/base.png" id="2_tfxug"]
+
+[node name="Ground" type="Node2D"]
+script = ExtResource("1_bncyv")
+
+[node name="Ground1" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Ground1"]
+position = Vector2(44.2622, -119.866)
+scale = Vector2(1.62892, 2.41203)
+texture = ExtResource("2_tfxug")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground1"]
+position = Vector2(45, -78)
+scale = Vector2(1.63018, 1.11866)
+polygon = PackedVector2Array(-52.1413, 28.6056, -41.7131, 33.9692, -30.6714, 35.757, -24.5371, 36.651, -14.1088, 34.8631, 0.613422, 37.5449, 11.6551, 35.757, 19.6297, 33.9692, 29.4445, 33.0753, 38.6459, 32.1813, 49.6876, 33.0753, 58.889, 32.1813, 66.2502, 33.0753, 72.9979, 33.9692, 87.1067, 33.9692, 96.3081, 30.3935, 108.577, 28.6056, 108.5, 61, -108.5, 61, -109.19, 27.7117, -96.9216, 29.4996, -74.2247, 31.2874, -66.2502, 27.7117)
+
+[node name="Ground2" type="Area2D" parent="."]
+
+[node name="Sprite2" type="Sprite2D" parent="Ground2"]
+position = Vector2(398, -120)
+scale = Vector2(1.62892, 2.41203)
+texture = ExtResource("2_tfxug")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground2"]
+position = Vector2(399, -77)
+scale = Vector2(1.63018, 1.11866)
+polygon = PackedVector2Array(-52.1413, 28.6056, -41.7131, 33.9692, -30.6714, 35.757, -24.5371, 36.651, -14.1088, 34.8631, 0.613422, 37.5449, 11.6551, 35.757, 19.6297, 33.9692, 29.4445, 33.0753, 38.6459, 32.1813, 49.6876, 33.0753, 58.889, 32.1813, 66.2502, 33.0753, 72.9979, 33.9692, 87.1067, 33.9692, 96.3081, 30.3935, 108.577, 28.6056, 108.5, 61, -108.5, 61, -109.19, 27.7117, -96.9216, 29.4996, -74.2247, 31.2874, -66.2502, 27.7117)
+
+[connection signal="body_entered" from="Ground1" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Ground2" to="." method="_on_body_entered"]

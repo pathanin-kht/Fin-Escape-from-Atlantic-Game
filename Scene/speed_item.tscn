@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://rihqddqjtx48"]
+
+[ext_resource type="Script" path="res://Scripts/speed_item.gd" id="1_pxr7q"]
+[ext_resource type="Texture2D" uid="uid://bpd52vlkpy05b" path="res://Assets/Item/Bubble_1.png" id="3_ftgnr"]
+
+[sub_resource type="Animation" id="Animation_5yuou"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/ItemSpeed/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.537255), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwb4w"]
+_data = {
+"idle": SubResource("Animation_5yuou")
+}
+
+[node name="SpeedItemPair" type="Node2D"]
+script = ExtResource("1_pxr7q")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="ItemSpeed" type="Sprite2D" parent="Area2D"]
+clip_children = 2
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.330147, 0.344853)
+texture = ExtResource("3_ftgnr")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D/ItemSpeed"]
+offset_left = -48.0
+offset_top = -43.0
+offset_right = 43.0
+offset_bottom = 46.0
+color = Color(1, 1, 1, 0.167002)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.330147, 0.344853)
+polygon = PackedVector2Array(20.5, -42.4, 20.5, -40.5, 38.5, -26.5, 38.5, -24.1, 42.5, -18.1, 42.5, 18.2, 37.8, 28.5, 36.4, 28.5, 27.4, 38.5, 25.1, 38.5, 19.1, 42.5, -18.9, 42.5, -35.5, 30.5, -35.5, 28.1, -42.5, 17.2, -42.5, -16.5, -38.9, -25.5, -37.4, -25.5, -28.4, -36.5, -26, -36.5, -14.9, -42.5, 18.9, -42.5)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wwb4w")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_speeditem_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

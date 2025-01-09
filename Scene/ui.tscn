@@ -1,0 +1,228 @@
+[gd_scene load_steps=10 format=3 uid="uid://jcb4i00ct6oe"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_v6wy4"]
+[ext_resource type="FontFile" uid="uid://dfdjcsx5sgaap" path="res://Assets/Font/Font.ttf" id="2_wvh3j"]
+[ext_resource type="Theme" uid="uid://c7tjybagg8yo6" path="res://Assets/Background/button.tres" id="3_jy1mp"]
+[ext_resource type="Texture2D" uid="uid://cipdx7fm8e6wf" path="res://Assets/Background/Player_Game_Over.png" id="4_na6ib"]
+[ext_resource type="Texture2D" uid="uid://pmtnmpt5mrt8" path="res://Assets/Background/Clipped_image_20230919_031614.png" id="5_yul7q"]
+[ext_resource type="Texture2D" uid="uid://h6p16g71jrqr" path="res://Assets/Background/Player_Game_Start.png" id="6_tv0u0"]
+[ext_resource type="AudioStream" uid="uid://ds8x8xmtmam4l" path="res://Assets/Sound/Button/button.mp3" id="7_0aqwb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbbpm"]
+bg_color = Color(1, 1, 1, 0.713726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_siw3e"]
+bg_color = Color(1, 1, 1, 0.482353)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_v6wy4")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 32
+
+[node name="PointsLable" type="Label" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverBox" type="Control" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/GameOverBox"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 5.0
+offset_top = 60.0
+offset_right = 331.0
+offset_bottom = 142.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 75
+text = "GAME  OVER"
+
+[node name="Panel" type="Panel" parent="MarginContainer/GameOverBox"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 213.0
+offset_right = 230.0
+offset_bottom = 346.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_jbbpm")
+
+[node name="Button" type="Button" parent="MarginContainer/GameOverBox/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.47
+anchor_top = 0.5
+anchor_right = 0.47
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -1.5
+offset_right = 65.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_jy1mp")
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 30
+text = "RETRY"
+
+[node name="FinnGameOver" type="Sprite2D" parent="MarginContainer/GameOverBox"]
+texture_filter = 1
+position = Vector2(153, 147)
+scale = Vector2(0.239375, 0.22)
+texture = ExtResource("4_na6ib")
+
+[node name="Label2" type="Label" parent="MarginContainer/GameOverBox"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 217.0
+offset_right = 218.0
+offset_bottom = 248.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 35
+text = "HIGH SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="highScore" type="Label" parent="MarginContainer/GameOverBox"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 246.0
+offset_right = 172.0
+offset_bottom = 277.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 35
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Startmenu" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Startmenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 77.0938
+offset_top = 51.8125
+offset_right = 227.094
+offset_bottom = 148.813
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 80
+text = "FINN
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/Startmenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 47.0
+offset_top = 160.0
+offset_right = 253.0
+offset_bottom = 187.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 30
+text = "ESCAPE FROM ATLANTIS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/Startmenu"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 299.0
+offset_right = 215.0
+offset_bottom = 344.0
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_siw3e")
+text = "TAB TO PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Boxtext" type="Sprite2D" parent="MarginContainer/Startmenu"]
+z_index = -1
+position = Vector2(145.094, 99.8125)
+scale = Vector2(0.643118, 0.901786)
+texture = ExtResource("5_yul7q")
+
+[node name="FinnUpdate" type="Sprite2D" parent="MarginContainer/Startmenu"]
+texture_filter = 1
+position = Vector2(147.25, 11.6875)
+scale = Vector2(0.1625, 0.155625)
+texture = ExtResource("6_tv0u0")
+
+[node name="Quite" type="Button" parent="MarginContainer/Startmenu"]
+layout_mode = 2
+offset_left = 189.0
+offset_top = 430.0
+offset_right = 281.0
+offset_bottom = 463.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("3_jy1mp")
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 25
+text = "Quit
+"
+
+[node name="How to play" type="Button" parent="MarginContainer/Startmenu"]
+layout_mode = 2
+offset_left = 11.0
+offset_top = 431.0
+offset_right = 103.0
+offset_bottom = 465.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("3_jy1mp")
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 25
+text = "Guide"
+
+[node name="Options" type="Button" parent="MarginContainer/Startmenu"]
+layout_mode = 0
+offset_left = 202.0
+offset_top = -29.0
+offset_right = 285.0
+offset_bottom = 3.0
+theme = ExtResource("3_jy1mp")
+theme_override_fonts/font = ExtResource("2_wvh3j")
+theme_override_font_sizes/font_size = 30
+text = "OPTIONS"
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_0aqwb")
+bus = &"sfx"
+
+[connection signal="pressed" from="MarginContainer/GameOverBox/Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Startmenu/Quite" to="." method="_on_quite_pressed"]
+[connection signal="pressed" from="MarginContainer/Startmenu/How to play" to="." method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="MarginContainer/Startmenu/Options" to="." method="_on_options_pressed"]

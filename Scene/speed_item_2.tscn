@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcar33a642dp0"]
+
+[ext_resource type="Script" path="res://Scripts/SpeedItem.gd" id="1_bbe6w"]
+[ext_resource type="AudioStream" uid="uid://ue50i7cpenuo" path="res://Assets/Sound/Item Sound/Pick_up_speed_item.mp3" id="2_0gcfc"]
+
+[node name="SpeedItem" type="Node2D"]
+script = ExtResource("1_bbe6w")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="SpeedItemSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0gcfc")

@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt70s8xkh5r5t"]
+
+[ext_resource type="Script" path="res://Scripts/obstaclepair.gd" id="1_85lqw"]
+[ext_resource type="Texture2D" uid="uid://88c7ykl3h7qo" path="res://Assets/Obstacle/Stone.png" id="1_ktium"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdvl2"]
+size = Vector2(10.5, 187.5)
+
+[node name="Obstaclepair" type="Node2D"]
+script = ExtResource("1_85lqw")
+
+[node name="TopObstacle" type="Area2D" parent="."]
+position = Vector2(0, -300)
+
+[node name="Sprite2D" type="Sprite2D" parent="TopObstacle"]
+position = Vector2(6, -121)
+scale = Vector2(1.68923, 1.99846)
+texture = ExtResource("1_ktium")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TopObstacle"]
+position = Vector2(6, -121)
+scale = Vector2(1.68923, 1.99846)
+polygon = PackedVector2Array(72, -153, 49, -96.4, 49, -79, 56, -54.3, 56, -47.8, 53.7, -34, 52.4, -34, 41.4, -1, 40.2, -1, 27, 24.5, 27, 28.1, 21.8, 89, 20.3, 89, 10, 107.6, 10, 111.2, 2.7, 157, 1.5, 157, 0.0999985, 162, -11, 162, -11, 133, -15.8, 101, -16.5, 101, -32, 47.3, -32, 39, -32.9, 13, -34, 13, -34, 10, -34.7, 10, -51, -4.10001, -51, -11, -60.8, -106.2, -72, -112.7, -72, -162, 72, -162)
+
+[node name="BottomObstacle" type="Area2D" parent="."]
+position = Vector2(0, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="BottomObstacle"]
+position = Vector2(-4, 127)
+rotation = 3.14159
+scale = Vector2(1.40806, 2.17583)
+texture = ExtResource("1_ktium")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BottomObstacle"]
+position = Vector2(-4, 127)
+rotation = 3.14159
+scale = Vector2(1.40806, 2.17583)
+polygon = PackedVector2Array(72, -153, 49, -96.4, 49, -79, 56, -54.3, 56, -47.8, 53.7, -34, 52.4, -34, 41.4, -1, 40.2, -1, 27, 24.5, 27, 28.1, 21.8, 89, 20.3, 89, 10, 107.6, 10, 111.2, 2.7, 157, 1.5, 157, 0.0999985, 162, -11, 162, -11, 133, -15.8, 101, -16.5, 101, -32, 47.3, -32, 39, -32.9, 13, -34, 13, -34, 10, -34.7, 10, -51, -4.10001, -51, -11, -60.8, -106.2, -72, -112.7, -72, -162, 72, -162)
+
+[node name="Scored" type="Area2D" parent="."]
+position = Vector2(44, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scored"]
+position = Vector2(-19.75, -12.25)
+shape = SubResource("RectangleShape2D_mdvl2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="TopObstacle" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="BottomObstacle" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Scored" to="." method="_on_scored_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

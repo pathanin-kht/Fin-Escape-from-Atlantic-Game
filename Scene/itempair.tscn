@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://de32wvxqxyyj8"]
+
+[ext_resource type="Script" path="res://Scripts/itempair.gd" id="1_o7bmq"]
+[ext_resource type="Texture2D" uid="uid://b83ag5qer4r3t" path="res://Assets/Item/ItemScore.png" id="2_6foo0"]
+[ext_resource type="Texture2D" uid="uid://b7s72oerj87r1" path="res://Assets/Item/‘hest_open.png" id="2_woaxa"]
+[ext_resource type="Texture2D" uid="uid://c3v28bg0j32iy" path="res://Assets/Item/‘hest_ajar.png" id="4_djflk"]
+
+[sub_resource type="Animation" id="Animation_m5c6h"]
+resource_name = "Collect"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_6foo0"), ExtResource("4_djflk"), ExtResource("2_woaxa")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2iddt"]
+_data = {
+"Collect": SubResource("Animation_m5c6h")
+}
+
+[node name="Itempair" type="Node2D"]
+script = ExtResource("1_o7bmq")
+
+[node name="Item" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Item"]
+position = Vector2(-0.0999985, -1.6)
+scale = Vector2(0.12367, 0.120283)
+texture = ExtResource("2_6foo0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Item"]
+position = Vector2(-0.0999985, -1.6)
+scale = Vector2(0.12367, 0.120283)
+polygon = PackedVector2Array(126, -103.1, 126, -101.7, 135, -91.8, 135, -89.3, 138, -82.4, 138, -64, 137.1, -26, 139.8, -26, 141, -24.8, 141, -6.2, 138.4, -3.6, 141, -1.6, 141, 17, 137, 18.4, 137, 71, 137.7, 71, 141, 73.5, 141, 106, -141, 106, -141, 74, -138, 72, -138, 19, -141, 19, -141, -2, -140.1, -3.3, -141, -4.2, -141, -25, -140.1, -25, -138, -25.5, -138, -86, -136.4, -86, -132.4, -97, -130.7, -97, -120, -105.9, -71, -106, -66.3, -102, 66.2, -102, 70.2, -106, 121.6, -106)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2iddt")
+}
+
+[connection signal="body_entered" from="Item" to="." method="_on_item_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

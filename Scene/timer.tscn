@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://m41eds4cugdg"]
+
+[ext_resource type="Script" path="res://Scripts/Timer.gd" id="1_ysuya"]
+[ext_resource type="FontFile" uid="uid://dfdjcsx5sgaap" path="res://Assets/Font/Font.ttf" id="2_ps1q4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pedgu"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.74902, 0.490196, 0.12549, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_0wphv"]
+Panel/styles/panel = SubResource("StyleBoxFlat_pedgu")
+
+[node name="Timer" type="CanvasLayer"]
+script = ExtResource("1_ysuya")
+
+[node name="Timeset" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Timeset"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 30.0
+theme = SubResource("Theme_0wphv")
+
+[node name="minutes_lable" type="Label" parent="Timeset/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 28.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("2_ps1q4")
+theme_override_font_sizes/font_size = 30
+text = "00."
+horizontal_alignment = 2
+
+[node name="seconds_lable" type="Label" parent="Timeset/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 13.0
+offset_right = 53.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("2_ps1q4")
+theme_override_font_sizes/font_size = 30
+text = "00."
+horizontal_alignment = 2
+
+[node name="msec_lable" type="Label" parent="Timeset/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 43.0
+offset_right = 83.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("2_ps1q4")
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 2

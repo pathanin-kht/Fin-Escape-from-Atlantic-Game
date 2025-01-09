@@ -1,0 +1,274 @@
+[gd_scene load_steps=19 format=3 uid="uid://ct74pfwmf80s2"]
+
+[ext_resource type="Script" path="res://Scripts/how_to_play.gd" id="1_tjk3g"]
+[ext_resource type="Texture2D" uid="uid://rmfwrncxs0pn" path="res://Assets/Background/bg_guide_options.png" id="2_en6ol"]
+[ext_resource type="FontFile" uid="uid://dfdjcsx5sgaap" path="res://Assets/Font/Font.ttf" id="3_s13qi"]
+[ext_resource type="Texture2D" uid="uid://b83ag5qer4r3t" path="res://Assets/Item/ItemScore.png" id="4_j256a"]
+[ext_resource type="Texture2D" uid="uid://u4xjkc4xp8re" path="res://Assets/Item/ItemSpeed.png" id="5_aa7s2"]
+[ext_resource type="Texture2D" uid="uid://bupj2bmemchta" path="res://Assets/Item/Bomb.png" id="6_2cyku"]
+[ext_resource type="Texture2D" uid="uid://88c7ykl3h7qo" path="res://Assets/Obstacle/Stone.png" id="7_oh2m7"]
+[ext_resource type="Theme" uid="uid://c7tjybagg8yo6" path="res://Assets/Background/button.tres" id="8_akufw"]
+[ext_resource type="AudioStream" uid="uid://dyw4vx8x30pc0" path="res://Assets/Sound/Intro/intro_setting.mp3" id="9_okgwo"]
+[ext_resource type="AudioStream" uid="uid://ds8x8xmtmam4l" path="res://Assets/Sound/Button/button.mp3" id="10_l6113"]
+
+[sub_resource type="Animation" id="Animation_77ur0"]
+resource_name = "ItemScore"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemScore:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(43.5625, 221), Vector2(43.563, 210), Vector2(43.5625, 221)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r2fhe"]
+_data = {
+"ItemScore": SubResource("Animation_77ur0")
+}
+
+[sub_resource type="Animation" id="Animation_ik64o"]
+resource_name = "Stone"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(43.5625, 118), Vector2(43.563, 108), Vector2(43.5625, 118)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5e2rs"]
+_data = {
+"Stone": SubResource("Animation_ik64o")
+}
+
+[sub_resource type="Animation" id="Animation_u75ov"]
+resource_name = "ItemSpeed"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemSpeed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(47.5625, 311), Vector2(47.563, 301), Vector2(47.5625, 311)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_twftw"]
+_data = {
+"ItemSpeed": SubResource("Animation_u75ov")
+}
+
+[sub_resource type="Animation" id="Animation_2xc5y"]
+resource_name = "Bomb"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bomb:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(46.5625, 430), Vector2(46.563, 420), Vector2(46.5625, 430)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rti3c"]
+_data = {
+"Bomb": SubResource("Animation_2xc5y")
+}
+
+[node name="How to play" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tjk3g")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(143.5, 257.25)
+scale = Vector2(0.996528, 1.364)
+texture = ExtResource("2_en6ol")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -118.0
+offset_top = -31.0
+offset_right = 403.0
+offset_bottom = 101.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_s13qi")
+theme_override_font_sizes/font_size = 68
+text = "How to play
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemScore" type="Sprite2D" parent="."]
+position = Vector2(43.5625, 221)
+scale = Vector2(0.182624, 0.240566)
+texture = ExtResource("4_j256a")
+
+[node name="ItemSpeed" type="Sprite2D" parent="."]
+position = Vector2(47.5625, 311)
+scale = Vector2(0.629412, 0.664706)
+texture = ExtResource("5_aa7s2")
+
+[node name="Bomb" type="Sprite2D" parent="."]
+position = Vector2(46.5627, 425.079)
+scale = Vector2(0.314331, 0.319934)
+texture = ExtResource("6_2cyku")
+
+[node name="Stone" type="Sprite2D" parent="."]
+position = Vector2(43.5625, 118)
+scale = Vector2(0.399306, 0.259259)
+texture = ExtResource("7_oh2m7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r2fhe")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5e2rs")
+}
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_twftw")
+}
+
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rti3c")
+}
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -229.438
+offset_top = 73.0
+offset_right = 49.5625
+offset_bottom = -349.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_s13qi")
+theme_override_font_sizes/font_size = 30
+text = "Dodge stone
+ score +1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -221.438
+offset_top = 181.0
+offset_right = 57.5625
+offset_bottom = -241.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_s13qi")
+theme_override_font_sizes/font_size = 30
+text = "Collect treasure
+score +3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -148.438
+offset_top = 259.0
+offset_right = -14.4375
+offset_bottom = -130.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_s13qi")
+theme_override_font_sizes/font_size = 30
+text = "Collect bubble
+speed up
+(2 sec.)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.438
+offset_top = 378.0
+offset_right = -10.4375
+offset_bottom = -27.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_s13qi")
+theme_override_font_sizes/font_size = 30
+text = "Collect bumb
+score -2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoBack" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 84.0
+offset_top = 473.0
+offset_right = 197.0
+offset_bottom = 509.0
+theme = ExtResource("8_akufw")
+theme_override_fonts/font = ExtResource("3_s13qi")
+theme_override_font_sizes/font_size = 30
+text = "Go Back"
+
+[node name="intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_okgwo")
+volume_db = -10.0
+bus = &"music"
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_l6113")
+bus = &"sfx"
+
+[connection signal="pressed" from="GoBack" to="." method="_on_go_back_pressed"]

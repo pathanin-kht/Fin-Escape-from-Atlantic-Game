@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://csl5y18vrr3q5"]
+
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_bwn0c"]
+[ext_resource type="AudioStream" uid="uid://h8xrta8ybss2" path="res://Assets/Sound/Item Sound/Pick_Up_Item.mp3" id="2_cverj"]
+
+[node name="Item" type="Node2D"]
+script = ExtResource("1_bwn0c")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="Pick_Up_Item" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_cverj")
+volume_db = 10.0
+bus = &"sfx"

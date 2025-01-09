@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dss1q8rsiidge"]
+
+[ext_resource type="Script" path="res://Scripts/Bomb.gd" id="1_85wod"]
+[ext_resource type="AudioStream" uid="uid://883akwud2dsq" path="res://Assets/Sound/Item Sound/bomb.wav" id="2_wex4g"]
+
+[node name="Bomb" type="Node2D"]
+script = ExtResource("1_85wod")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="BombSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_wex4g")
+volume_db = -10.0

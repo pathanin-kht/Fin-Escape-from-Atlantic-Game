@@ -1,0 +1,192 @@
+[gd_scene load_steps=8 format=3 uid="uid://tpqfr6dguqcw"]
+
+[ext_resource type="Script" path="res://Scripts/options.gd" id="1_ltbul"]
+[ext_resource type="Texture2D" uid="uid://rmfwrncxs0pn" path="res://Assets/Background/bg_guide_options.png" id="2_5t3eu"]
+[ext_resource type="PackedScene" uid="uid://cuf303du6bcrs" path="res://Scene/volume_slider.tscn" id="2_ocxj1"]
+[ext_resource type="FontFile" uid="uid://dfdjcsx5sgaap" path="res://Assets/Font/Font.ttf" id="3_nwmve"]
+[ext_resource type="AudioStream" uid="uid://dyw4vx8x30pc0" path="res://Assets/Sound/Intro/intro_setting.mp3" id="5_a86th"]
+[ext_resource type="Theme" uid="uid://c7tjybagg8yo6" path="res://Assets/Background/button.tres" id="6_25ax0"]
+[ext_resource type="AudioStream" uid="uid://ds8x8xmtmam4l" path="res://Assets/Sound/Button/button.mp3" id="7_832gl"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ltbul")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(143.5, 257.25)
+scale = Vector2(0.996528, 1.364)
+texture = ExtResource("2_5t3eu")
+
+[node name="Display2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 19.0
+offset_right = 200.0
+offset_bottom = 66.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_nwmve")
+theme_override_font_sizes/font_size = 55
+text = "DISPLAY"
+
+[node name="Audio" type="Label" parent="."]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 243.0
+offset_right = 179.0
+offset_bottom = 290.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_nwmve")
+theme_override_font_sizes/font_size = 55
+text = "AUDIO
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = 47.0
+offset_right = 73.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_nwmve")
+theme_override_font_sizes/font_size = 30
+text = "MASTER VOLUME"
+
+[node name="volume_slider" parent="VBoxContainer" instance=ExtResource("2_ocxj1")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_nwmve")
+theme_override_font_sizes/font_size = 30
+text = "MUSIC VOLUMB
+"
+
+[node name="volume_slider2" parent="VBoxContainer" instance=ExtResource("2_ocxj1")]
+layout_mode = 2
+bus_name = "music"
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_nwmve")
+theme_override_font_sizes/font_size = 30
+text = "SFX VOLUMB
+"
+
+[node name="volume_slider3" parent="VBoxContainer" instance=ExtResource("2_ocxj1")]
+layout_mode = 2
+bus_name = "sfx"
+
+[node name="intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_a86th")
+bus = &"music"
+
+[node name="GoBack" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 84.0
+offset_top = 473.0
+offset_right = 197.0
+offset_bottom = 509.0
+theme = ExtResource("6_25ax0")
+theme_override_fonts/font = ExtResource("3_nwmve")
+theme_override_font_sizes/font_size = 30
+text = "Go Back"
+
+[node name="Display" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Display"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 90.0
+offset_right = 236.0
+offset_bottom = 224.0
+
+[node name="Lables" type="VBoxContainer" parent="Display/HBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreen" type="Label" parent="Display/HBoxContainer/Lables"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_nwmve")
+theme_override_font_sizes/font_size = 30
+text = "FULLSCREEN"
+vertical_alignment = 1
+
+[node name="Borderless" type="Label" parent="Display/HBoxContainer/Lables"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_nwmve")
+theme_override_font_sizes/font_size = 30
+text = "BORDERLESS
+"
+vertical_alignment = 1
+
+[node name="VSync" type="Label" parent="Display/HBoxContainer/Lables"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_nwmve")
+theme_override_font_sizes/font_size = 30
+text = "VSYNC"
+vertical_alignment = 1
+
+[node name="Check" type="VBoxContainer" parent="Display/HBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreen" type="CheckBox" parent="Display/HBoxContainer/Check"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Borderless" type="CheckBox" parent="Display/HBoxContainer/Check"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSync" type="CheckBox" parent="Display/HBoxContainer/Check"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_832gl")
+bus = &"sfx"
+
+[connection signal="pressed" from="GoBack" to="." method="_on_go_back_pressed"]
+[connection signal="toggled" from="Display/HBoxContainer/Check/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="toggled" from="Display/HBoxContainer/Check/Borderless" to="." method="_on_borderless_toggled"]
+[connection signal="toggled" from="Display/HBoxContainer/Check/VSync" to="." method="_on_v_sync_toggled"]

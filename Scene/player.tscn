@@ -1,0 +1,171 @@
+[gd_scene load_steps=15 format=3 uid="uid://bn7ydvtwrjq71"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_7h70i"]
+[ext_resource type="Texture2D" uid="uid://derxr45roso77" path="res://Assets/Player/Swim.png" id="2_8uvln"]
+[ext_resource type="AudioStream" uid="uid://dm0eg1uw0h24p" path="res://Assets/Sound/Sound effects/swimming_sound.mp3" id="3_5yyk7"]
+[ext_resource type="AudioStream" uid="uid://bi32i17jq2p3t" path="res://Assets/Sound/Intro/intro_play_game.mp3" id="4_xnwo8"]
+[ext_resource type="AudioStream" uid="uid://b1jgop7fg0rqn" path="res://Assets/Sound/Sound effects/death_sound.mp3" id="5_q4lfg"]
+[ext_resource type="AudioStream" uid="uid://u18xycqtqq6n" path="res://Assets/Sound/Sound effects/hurt_sound.mp3" id="5_qtox7"]
+
+[sub_resource type="Animation" id="Animation_215km"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dlrip"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10)]
+}
+
+[sub_resource type="Animation" id="Animation_r54fa"]
+resource_name = "swim"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ybwl4"]
+_data = {
+"RESET": SubResource("Animation_215km"),
+"idle": SubResource("Animation_dlrip"),
+"swim": SubResource("Animation_r54fa")
+}
+
+[sub_resource type="Animation" id="Animation_be7lm"]
+resource_name = "Collect_speed"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.564706, 0.878431, 0.937255, 0.631373), Color(0.564706, 0.878431, 0.937255, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qgp0l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e7m1q"]
+resource_name = "hurtBlink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.501961), Color(1, 1, 1, 0.596078)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0h3l7"]
+_data = {
+"Collect_speed": SubResource("Animation_be7lm"),
+"RESET": SubResource("Animation_qgp0l"),
+"hurtBlink": SubResource("Animation_e7m1q")
+}
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -1.15223)
+script = ExtResource("1_7h70i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 2
+texture_filter = 1
+position = Vector2(7, -8)
+scale = Vector2(1.88281, 2.0651)
+texture = ExtResource("2_8uvln")
+hframes = 6
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = -23.9004
+offset_top = -14.9377
+offset_right = 16.0996
+offset_bottom = 25.0623
+color = Color(1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ybwl4")
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(229, -6)
+scale = Vector2(1.84304, 1.68667)
+polygon = PackedVector2Array(-108.516, -1.6884, -107.974, 0.683138, -107.974, 2.46179, -105.261, 2.46179, -105.261, 6.24049, -105.803, 7.79775, -114.485, 7.20486, -116.655, 8.39063, -119.368, 10.7622, -119.911, 11.3551, -124.251, 10.6594, -141.071, 11.3551, -142, 11.5, -142.156, 10.1693, -142.156, 8.39063, -142.156, 7.20486, -141.614, 5.42621, -135.103, 6.0191, -140.529, -0.0124817, -139.986, -4.05994, -136.731, -4.05994, -134.56, -2.87417, -132.933, -4.05994, -126.964, -1.6884, -125.879, -2.87417, -121.538, -2.87417, -119.368, -5.2457, -117.198, -7.02436, -114.485, -5.83859, -111.772, -4.05994, -109.602, -3.46705)
+
+[node name="swim" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5yyk7")
+volume_db = -10.0
+bus = &"sfx"
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xnwo8")
+volume_db = -15.0
+bus = &"music"
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qtox7")
+bus = &"sfx"
+
+[node name="death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_q4lfg")
+
+[node name="Effects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0h3l7")
+}
+
+[node name="hurtTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

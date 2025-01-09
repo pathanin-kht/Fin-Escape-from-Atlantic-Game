@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7m8eyuoy8iu0"]
+
+[ext_resource type="Script" path="res://Scripts/gui.gd" id="1_jiuxb"]
+[ext_resource type="Theme" uid="uid://c7tjybagg8yo6" path="res://Assets/Background/button.tres" id="2_roho0"]
+[ext_resource type="FontFile" uid="uid://dfdjcsx5sgaap" path="res://Assets/Font/Font.ttf" id="3_ks2pm"]
+[ext_resource type="AudioStream" uid="uid://ds8x8xmtmam4l" path="res://Assets/Sound/Button/button.mp3" id="4_tvf1t"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_jiuxb")
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.270588)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 1
+offset_left = 66.0
+offset_top = 214.0
+offset_right = 229.0
+offset_bottom = 360.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Resume" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_roho0")
+theme_override_fonts/font = ExtResource("3_ks2pm")
+theme_override_font_sizes/font_size = 30
+text = "RESUME"
+
+[node name="Back to main" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_roho0")
+theme_override_fonts/font = ExtResource("3_ks2pm")
+theme_override_font_sizes/font_size = 30
+text = "BACK"
+
+[node name="Quit" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_roho0")
+theme_override_fonts/font = ExtResource("3_ks2pm")
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+
+[node name="ButtonSound" type="AudioStreamPlayer2D" parent="PauseMenu"]
+stream = ExtResource("4_tvf1t")
+bus = &"music"
+
+[node name="PauseButton" type="Button" parent="."]
+texture_filter = 1
+offset_left = 215.0
+offset_top = 3.0
+offset_right = 284.0
+offset_bottom = 34.0
+theme = ExtResource("2_roho0")
+theme_override_fonts/font = ExtResource("3_ks2pm")
+theme_override_font_sizes/font_size = 23
+text = "PAUSE"
+
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Back to main" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

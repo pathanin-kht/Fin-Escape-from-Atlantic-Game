@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=3 uid="uid://c64es2wv66sjk"]
+
+[ext_resource type="PackedScene" uid="uid://bn7ydvtwrjq71" path="res://Scene/player.tscn" id="1_gdl20"]
+[ext_resource type="Texture2D" uid="uid://b4jvs0rq2uhis" path="res://Assets/background/background (1).png" id="1_jno8l"]
+[ext_resource type="Script" path="res://Scene/GameManager.gd" id="1_wiyg6"]
+[ext_resource type="PackedScene" uid="uid://dit83uw86qmf" path="res://Scene/ground.tscn" id="3_fw1vw"]
+[ext_resource type="PackedScene" uid="uid://rfm80jyawbsm" path="res://Scene/obstacle.tscn" id="4_017nd"]
+[ext_resource type="PackedScene" uid="uid://dcar33a642dp0" path="res://Scene/speed_item_2.tscn" id="5_43eac"]
+[ext_resource type="PackedScene" uid="uid://biufj2762yhs6" path="res://Scene/bomb.tscn" id="6_md043"]
+[ext_resource type="PackedScene" uid="uid://csl5y18vrr3q5" path="res://Scene/item.tscn" id="6_ooepn"]
+[ext_resource type="PackedScene" uid="uid://suuadt8p5ktm" path="res://Scene/fade.tscn" id="6_y85sh"]
+[ext_resource type="PackedScene" uid="uid://ca4egjai2qdew" path="res://Scene/ui.tscn" id="7_8vfap"]
+[ext_resource type="PackedScene" uid="uid://b7m8eyuoy8iu0" path="res://Scene/gui.tscn" id="11_2qbys"]
+[ext_resource type="PackedScene" uid="uid://m41eds4cugdg" path="res://Scene/timer.tscn" id="12_0u44j"]
+
+[node name="main" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("1_wiyg6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.0540354)
+scale = Vector2(1, 1.60343)
+texture = ExtResource("1_jno8l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Ground" parent="." instance=ExtResource("3_fw1vw")]
+position = Vector2(-11, 231)
+
+[node name="Item" parent="." instance=ExtResource("6_ooepn")]
+
+[node name="SpeedItem" parent="." instance=ExtResource("5_43eac")]
+
+[node name="Bomb" parent="." instance=ExtResource("6_md043")]
+
+[node name="ObstacleSpawner" parent="." instance=ExtResource("4_017nd")]
+
+[node name="Player" parent="." instance=ExtResource("1_gdl20")]
+
+[node name="Fade" parent="." instance=ExtResource("6_y85sh")]
+
+[node name="UI" parent="." instance=ExtResource("7_8vfap")]
+
+[node name="SpeedTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label" type="Label" parent="SpeedTimer"]
+offset_left = 225.0
+offset_top = 418.0
+offset_right = 265.0
+offset_bottom = 441.0
+
+[node name="GUI" parent="." instance=ExtResource("11_2qbys")]
+
+[node name="Timer" parent="." instance=ExtResource("12_0u44j")]
+
+[connection signal="timeout" from="SpeedTimer" to="GameManager" method="reset_speed"]

@@ -1,0 +1,195 @@
+[gd_scene load_steps=17 format=3 uid="uid://bfslke4n1txne"]
+
+[ext_resource type="Texture2D" uid="uid://derxr45roso77" path="res://Assets/Player/Swim.png" id="3_8tedh"]
+
+[sub_resource type="GDScript" id="GDScript_b0j4q"]
+script/source = "extends CharacterBody2D
+
+class_name Player2 
+
+signal game_started
+
+@export var gravity = 900.0
+@export var jump_force: int = -300
+@onready var animation_player = $AnimatedSprite2D/AnimationPlayer
+
+var max_speed = 400
+var rotation_speed = 2
+var is_started = false
+var should_process_input = true
+
+
+func _ready():  
+	velocity = Vector2.ZERO
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed(\"jump\")&& should_process_input:
+		if !is_started:
+			game_started.emit()
+			animation_player.play(\"swim\")
+			is_started = true
+		jump()    
+	if !is_started:
+		return
+	velocity.y += gravity * delta
+	
+	velocity.y = min(velocity.y, max_speed)
+	
+	move_and_collide(velocity * delta)
+	
+	rotate_player()
+	
+func jump():
+	velocity.y = jump_force
+	rotation = deg_to_rad(-30)
+
+func rotate_player():
+	if velocity.y > 0 and rad_to_deg(rotation) < 90:
+		rotation += rotation_speed * deg_to_rad(1)
+	elif velocity.y < 0 and rad_to_deg(rotation) > -30:
+		rotation -= rotation_speed * deg_to_rad(1)
+
+func kill():
+	should_process_input = false
+
+func stop():
+	animation_player.stop()
+	gravity = 0
+	velocity = Vector2.ZERO
+	
+	
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bguka"]
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c70yy"]
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojrq2"]
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odo13"]
+atlas = ExtResource("3_8tedh")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfwan"]
+atlas = ExtResource("3_8tedh")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jvnh"]
+atlas = ExtResource("3_8tedh")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bebj6"]
+atlas = ExtResource("3_8tedh")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iscbn"]
+atlas = ExtResource("3_8tedh")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y1t8"]
+atlas = ExtResource("3_8tedh")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pcku8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bguka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c70yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojrq2")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odo13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfwan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jvnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bebj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iscbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y1t8")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_jgaur"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_n3qf0"]
+resource_name = "hurt"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_83xhy"]
+resource_name = "swim"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_73x44"]
+_data = {
+"RESET": SubResource("Animation_jgaur"),
+"hurt": SubResource("Animation_n3qf0"),
+"swim": SubResource("Animation_83xhy")
+}
+
+[node name="Player2" type="CharacterBody2D"]
+script = SubResource("GDScript_b0j4q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -8.3125)
+scale = Vector2(1.70833, 2.02865)
+sprite_frames = SubResource("SpriteFrames_pcku8")
+animation = &"swim"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_73x44")
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(227, -5)
+scale = Vector2(1.84304, 1.68667)
+polygon = PackedVector2Array(-108, -5.6, -108, -3.9, -105.803, -0.0124817, -108.516, 4.73059, -107.974, 10.6594, -115.9, 11, -124.251, 10.6594, -142, 14, -142, 11.5, -144, 8.2, -144, 4, -142.5, 4, -141.2, 3.3, -143, 2.1, -140.529, -0.0124817, -139.8, -6, -135.8, -6, -127, -4.4, -120, -6.5, -120, -8.6)
