@@ -26,7 +26,8 @@ My first game project at Khon Kaen University, completed between September and O
 For educational use only. Modify and use the code freely.
 
 ## Acknowledgements
-- Special thanks to [CraftPix.net](https://craftpix.net/) for providing free 2D game assets used in this project.  
+- Special thanks to [CraftPix.net](https://craftpix.net/) for providing free 2D game assets used in this project.
+  
   > **Note:** The assets were downloaded for educational purposes, and I am unable to recall the specific license terms at the time of download.
   
 ## Contact
