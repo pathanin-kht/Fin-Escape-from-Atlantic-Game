@@ -22,13 +22,12 @@ My first game project at Khon Kaen University, completed between September and O
 
 3. **Run the Game**:
    - Click **Run project** (or press **F5**) to start the game.
-   - 
 ## License
 For educational use only. Modify and use the code freely.
 
 ## Acknowledgements
 - Special thanks to [CraftPix.net](https://craftpix.net/) for providing free 2D game assets used in this project.  
-  (Note: The assets were downloaded for educational purposes, and I am unable to recall the specific license terms at the time of download.)
+  > **Note:** The assets were downloaded for educational purposes, and I am unable to recall the specific license terms at the time of download.
   
 ## Contact
 For feedback or inquiries, feel free to reach out via [pathanin.kht@gmail.com](pathanin.kht@gmail.com).
