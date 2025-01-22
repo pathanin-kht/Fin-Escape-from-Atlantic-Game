@@ -1,5 +1,5 @@
-# ![Logo](https://github.com/pathanin-kht/Fin-Escape-from-Atlantic-Game/blob/acaf3a527d071495c8faaf716b4dd7db659d4a18/logo%20(50%20x%2050%20px).png)  [**Fin: Escape from Atlantic-Game**](https://pathanink.itch.io/finn-escape-from-atlantis)
-
+# ![Logo](https://github.com/pathanin-kht/Fin-Escape-from-Atlantic-Game/blob/acaf3a527d071495c8faaf716b4dd7db659d4a18/logo%20(50%20x%2050%20px).png)  [**Fin: Escape from Atlantic**](https://pathanink.itch.io/finn-escape-from-atlantis)
+# Project Status: Development paused temporarily.
 ## Overview
 My first game project at Khon Kaen University, completed between September and October 2023, was a 2D game called "Fin: Escape from Atlantic." I developed it using the Godot Engine, featuring dynamic obstacles, power-ups, and score tracking. The game was published on itch.io for cross-platform play and smooth performance.
 
